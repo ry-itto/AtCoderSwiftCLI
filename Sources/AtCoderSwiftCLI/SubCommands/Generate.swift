@@ -13,11 +13,10 @@ extension AtCoderSwiftCommand {
         var projectName: String
 
         func run() throws {
+            let generateConfiguration = ABCConfiguration()
             let project: Project = .init(
                 name: projectName,
-                targets: [
-                    .init(name: "A", type: .commandLineTool, platform: .macOS, sources: ["A"]),
-                ]
+                targets: generateConfiguration.targets
             )
             let fileWriter = FileWriter(project: project)
 
