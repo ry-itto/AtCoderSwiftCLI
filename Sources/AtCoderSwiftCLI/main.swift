@@ -4,8 +4,8 @@ struct AtCoderSwiftCommand: ParsableCommand {
     static var configuration: CommandConfiguration = .init(
         commandName: "atcoder-swift",
         abstract: "AtCoder Swift CLI",
-        subcommands: [],
-        defaultSubcommand: nil)
+        subcommands: [Generate.self],
+        defaultSubcommand: Generate.self)
 }
 
 AtCoderSwiftCommand.main()
