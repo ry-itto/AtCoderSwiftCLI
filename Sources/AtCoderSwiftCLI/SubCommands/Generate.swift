@@ -1,5 +1,6 @@
 import ArgumentParser
 import Foundation
+import PathKit
 import ProjectSpec
 import XcodeProj
 import XcodeGenKit
@@ -14,6 +15,19 @@ extension AtCoderSwiftCommand {
 
         func run() throws {
             let generateConfiguration = ABCConfiguration()
+
+            generateConfiguration.problems.forEach { (problem) in
+                do{
+                    let dir = Path.current + Path(problem)
+                    try dir.mkdir()
+                    let mainFile = dir + Path("main.swift")
+                    try mainFile.write("")
+                } catch let e {
+                    print(e.localizedDescription)
+                    return
+                }
+            }
+
             let project: Project = .init(
                 name: projectName,
                 targets: generateConfiguration.targets
