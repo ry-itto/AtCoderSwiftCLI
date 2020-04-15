@@ -23,7 +23,7 @@ extension AtCoderSwiftCommand {
                     let mainFile = dir + Path("main.swift")
                     try mainFile.write("")
                 } catch let e {
-                    print(e.localizedDescription)
+                    print(e.localizedDescription, printer: .warn)
                     return
                 }
             }
@@ -38,13 +38,15 @@ extension AtCoderSwiftCommand {
             do {
                 let projectGenerator = ProjectGenerator(project: project)
                 xcodeProject = try projectGenerator.generateXcodeProject()
-            } catch {
+            } catch let e {
+                print(e.localizedDescription, printer: .error)
                 return
             }
 
             do {
                 try fileWriter.writeXcodeProject(xcodeProject)
-            } catch {
+            } catch let e {
+                print(e.localizedDescription, printer: .warn)
                 return
             }
         }
