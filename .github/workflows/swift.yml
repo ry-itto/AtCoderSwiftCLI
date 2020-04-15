@@ -1,0 +1,32 @@
+name: Swift
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Cache
+      uses: actions/cache@v1
+      env:
+        cache-name: cache-package-build
+      with:
+        path: .build
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/Package.swift') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+    - name: Select Xcode version
+      run: sudo xcode-select -s '/Applications/Xcode_11.4.app/Contents/Developer'
+    - name: Resolve
+      run: swift package resolve
+    - name: Build
+      run: make build
+    - name: Run tests
+      run: swift test 2>&1 | xcpretty
