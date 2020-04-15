@@ -1,3 +1,2 @@
 # AtCoderSwiftCLI
-
-A description of this package.
+![Swift](https://github.com/ry-itto/AtCoderSwiftCLI/workflows/Swift/badge.svg?branch=master)
