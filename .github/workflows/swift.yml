@@ -25,6 +25,7 @@ jobs:
     - name: Select Xcode version
       run: sudo xcode-select -s '/Applications/Xcode_11.4.app/Contents/Developer'
     - name: Resolve
+      if: steps.cache.outputs.cache-hit != 'true'
       run: swift package resolve
     - name: Build
       run: make build
