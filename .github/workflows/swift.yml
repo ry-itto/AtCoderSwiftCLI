@@ -12,6 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Cache
+      id: cache
       uses: actions/cache@v1
       env:
         cache-name: cache-package-build
