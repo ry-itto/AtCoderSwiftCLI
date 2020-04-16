@@ -2,8 +2,8 @@ import ArgumentParser
 import Foundation
 import PathKit
 import ProjectSpec
-import XcodeProj
 import XcodeGenKit
+import XcodeProj
 
 extension AtCoderSwiftCommand {
     struct Generate: ParsableCommand {
@@ -16,10 +16,11 @@ extension AtCoderSwiftCommand {
         func run() throws {
             let generateConfiguration = ABCConfiguration()
 
+            let projectDir = Path.current + Path(projectName)
             generateConfiguration.problems.forEach { (problem) in
-                do{
-                    let dir = Path.current + Path(problem)
-                    try dir.mkdir()
+                do {
+                    let dir = projectDir + Path(problem)
+                    try dir.mkpath()
                     let mainFile = dir + Path("main.swift")
                     try mainFile.write("")
                 } catch let e {
@@ -29,6 +30,7 @@ extension AtCoderSwiftCommand {
             }
 
             let project: Project = .init(
+                basePath: projectDir,
                 name: projectName,
                 targets: generateConfiguration.targets
             )
