@@ -7,10 +7,11 @@ protocol Configuration {
 extension Configuration {
     var targets: [Target] {
         problems.map { (problem) -> Target in
-            Target(name: problem,
-                   type: .commandLineTool,
-                   platform: .macOS,
-                   sources: [.init(path: problem)])
+            Target(
+                name: problem,
+                type: .commandLineTool,
+                platform: .macOS,
+                sources: [.init(path: problem)])
         }
     }
 }
