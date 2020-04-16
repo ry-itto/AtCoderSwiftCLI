@@ -1,6 +1,12 @@
 # AtCoderSwiftCLI
 ![Swift](https://github.com/ry-itto/AtCoderSwiftCLI/workflows/Swift/badge.svg?branch=master)
 
+## Installation
+### Mint
+```sh
+mint install ry-itto/AtCoderSwiftCLI
+```
+
 ## Usage
 Run this.
 ```sh
