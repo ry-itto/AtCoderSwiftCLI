@@ -4,14 +4,14 @@
 ## Usage
 Run this.
 ```sh
-atcoder-swift ABC126
+atcoder-swift PROJECT_NAME
 ```
 
 After running above, following directories will create.
 ```sh
-.
+PROJECT_NAME
 ├── A
-├── ABC.xcodeproj
+├── PROJECT_NAME.xcodeproj
 ├── B
 ├── C
 ├── D
@@ -21,5 +21,5 @@ After running above, following directories will create.
 
 And open `xcodeproj`.
 ```sh
-open ABC.xcodeproj
+open PROJECT_NAME.xcodeproj
 ```
