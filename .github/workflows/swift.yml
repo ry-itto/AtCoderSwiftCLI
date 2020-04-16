@@ -18,7 +18,7 @@ jobs:
         cache-name: cache-package-build
       with:
         path: .build
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/Package.swift') }}
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/Package.resolved') }}
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
@@ -32,3 +32,6 @@ jobs:
       run: make build
     - name: Run tests
       run: swift test 2>&1 | xcpretty
+    # Cache only `checkouts`, `repositories` and `dependencies-state.json`.
+    - name: Clean Build Cache
+      run: swift package clean
