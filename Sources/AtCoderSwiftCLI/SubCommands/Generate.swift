@@ -13,16 +13,25 @@ extension AtCoderSwiftCommand {
         @Argument()
         var projectName: String
 
+        // swift-format-ignore
+        @Option(
+            name: .shortAndLong,
+            default: nil,
+            help: "Template Swift file path. default: empty Swift file.")
+        var templatePath: String?
+
         func run() throws {
             let generateConfiguration = ABCConfiguration()
 
             let projectDir = Path.current + Path(projectName)
+            let fileContent = templatePath.flatMap({ try? Path($0).read() }) ?? ""
+
             generateConfiguration.problems.forEach { (problem) in
                 do {
                     let dir = projectDir + Path(problem)
                     try dir.mkpath()
                     let mainFile = dir + Path("main.swift")
-                    try mainFile.write("")
+                    try mainFile.write(fileContent)
                 } catch let e {
                     print(e.localizedDescription, printer: .warn)
                     return
