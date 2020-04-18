@@ -7,9 +7,9 @@ extension AtCoderSwiftCommand {
         static var configuration: CommandConfiguration = .init(
             abstract: "Open task",
             discussion: """
-                        If project name is 'abc...' or 'agc...' or 'arc...' and specify task,
-                        open the task in browser.
-                        """
+                If project name is 'abc...' or 'agc...' or 'arc...' and specify task,
+                open the task in browser.
+                """
         )
 
         @Argument()
