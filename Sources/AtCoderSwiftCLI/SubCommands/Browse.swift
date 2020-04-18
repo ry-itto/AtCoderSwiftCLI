@@ -21,8 +21,7 @@ extension AtCoderSwiftCommand {
                 taskPath.extension == nil,
                 taskPath.exists
             else {
-                print("No such task.")
-                return
+                throw AtCoderSwiftCLIError(message: "No such task.")
             }
         }
 
