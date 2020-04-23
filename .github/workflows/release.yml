@@ -11,12 +11,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Select Xcode version
-        run: sudo xcode-select -s '/Applications/Xcode_11.4.app/Contents/Developer'
-      - name: Resolve
-        run: swift package resolve
-      - name: Build
-        run: make build
+#       - name: Select Xcode version
+#         run: sudo xcode-select -s '/Applications/Xcode_11.4.app/Contents/Developer'
+#       - name: Resolve
+#         run: swift package resolve
+#       - name: Build
+#         run: make build
       - name: Create Release
         id: create_release
         uses: actions/create-release@latest
@@ -28,13 +28,13 @@ jobs:
           body: None
           draft: false
           prerelease: false
-      - name: Upload Release Asset
-        id: upload-release-asset 
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./.build/release/atcoder-swift
-          asset_name: atcoder-swift
-          asset_content_type: application/octet-stream
+#       - name: Upload Release Asset
+#         id: upload-release-asset 
+#         uses: actions/upload-release-asset@v1
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         with:
+#           upload_url: ${{ steps.create_release.outputs.upload_url }}
+#           asset_path: ./.build/release/atcoder-swift
+#           asset_name: atcoder-swift
+#           asset_content_type: application/octet-stream
