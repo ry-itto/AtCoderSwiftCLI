@@ -17,11 +17,6 @@ jobs:
         run: swift package resolve
       - name: Build
         run: make build
-  release:
-    name: Release
-    needs: [build]
-    runs-on: macos-latest
-    steps:
       - name: Create Release
         id: create_release
         uses: actions/create-release@latest
