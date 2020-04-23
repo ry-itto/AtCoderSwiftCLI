@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: macOS-latest
+    runs-on: macos-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -18,9 +18,9 @@ jobs:
       - name: Build
         run: make build
   release:
-    name: Releas
+    name: Release
     needs: [build]
-    runs-on: macOS-latest
+    runs-on: macos-latest
     steps:
       - name: Create Release
         id: create_release
