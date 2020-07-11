@@ -10,7 +10,7 @@ let package = Package(
         .executable(name: "atcoder-swift", targets: ["AtCoderSwiftCLI"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-argument-parser.git", .upToNextMinor(from: "0.0.4")),
+        .package(url: "https://github.com/apple/swift-argument-parser.git", .upToNextMinor(from: "0.2.0")),
         .package(url: "https://github.com/kylef/PathKit.git", from: "1.0.0"),
         .package(url: "https://github.com/yonaskolb/XcodeGen.git", from: "2.15.1"),
         .package(url: "https://github.com/onevcat/Rainbow", from: "3.0.0"),
