@@ -16,7 +16,6 @@ extension AtCoderSwiftCommand {
         // swift-format-ignore
         @Option(
             name: .shortAndLong,
-            default: nil,
             help: "Template Swift file path. default: empty Swift file.")
         var templatePath: String?
 
