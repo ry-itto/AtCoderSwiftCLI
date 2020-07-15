@@ -57,6 +57,29 @@ struct AtCoder {
         }.resume()
     }
 
+    static func loggedIn() -> Bool {
+        var returnValue = false
+
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
+        URLSession.shared.dataTask(with: Constants.atcoderURL) { data, response, error in
+            defer {
+                dispatchGroup.leave()
+            }
+            guard
+                let data = data,
+                let document = try? HTMLDocument(data: data)
+            else { return }
+
+            if let _ = document.css("div.header-mypage_btn").first {
+                returnValue = true
+            }
+        }.resume()
+        dispatchGroup.wait()
+
+        return returnValue
+    }
+
     static func submit(problem: String) {
 
     }
