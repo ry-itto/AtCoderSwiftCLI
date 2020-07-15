@@ -56,4 +56,8 @@ struct AtCoder {
             }.resume()
         }.resume()
     }
+
+    static func submit(problem: String) {
+
+    }
 }
