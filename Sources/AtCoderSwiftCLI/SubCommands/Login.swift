@@ -22,13 +22,13 @@ extension AtCoderSwiftCommand {
                 case .success:
                     print("Success!", printer: .info)
                 case .failure(let e):
-                    print(e.localizedDescription, printer: .error)
+                    print(e.message, printer: .error)
                 }
             }
             dispatchGroup.wait()
         }
 
-        private func login(username: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        private func login(username: String, password: String, completion: @escaping (Result<Void, AtCoderSwiftCLIError>) -> Void) {
             URLSession.shared.dataTask(with: Constants.loginURL) { data, response, error in
                 if let error = error {
                     print(error.localizedDescription, printer: .error)
