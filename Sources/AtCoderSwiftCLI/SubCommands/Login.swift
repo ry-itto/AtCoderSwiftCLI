@@ -1,6 +1,5 @@
 import ArgumentParser
 import Foundation
-import Fuzi
 
 extension AtCoderSwiftCommand {
     struct Login: ParsableCommand {
