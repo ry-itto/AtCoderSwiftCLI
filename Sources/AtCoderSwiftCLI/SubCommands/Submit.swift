@@ -1,4 +1,5 @@
 import ArgumentParser
+import Foundation
 
 extension AtCoderSwiftCommand {
     struct Submit: ParsableCommand {
@@ -10,7 +11,20 @@ extension AtCoderSwiftCommand {
         var problem: String
 
         func run() throws {
-            AtCoder.submit(problem: problem)
+            let dispatchGroup = DispatchGroup()
+            dispatchGroup.enter()
+            AtCoder.submit(problem: problem) { result in
+                defer {
+                    dispatchGroup.leave()
+                }
+                switch result {
+                case .success:
+                    print("Submit success!", printer: .info)
+                case .failure(let e):
+                    print(e.message, printer: .error)
+                }
+            }
+            dispatchGroup.wait()
         }
     }
 }
